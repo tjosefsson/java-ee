@@ -1,11 +1,10 @@
 package learning_java_ee.control;
 
+import jakarta.inject.Inject;
 import learning_java_ee.entity.Car;
 import learning_java_ee.entity.Color;
 import learning_java_ee.entity.Specification;
 
-import javax.inject.Inject;
-import javax.inject.Named;
 import java.util.UUID;
 
 public class CarFactory {

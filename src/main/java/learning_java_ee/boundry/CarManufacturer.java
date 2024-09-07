@@ -1,13 +1,14 @@
 package learning_java_ee.boundry;
 
 
+import jakarta.ejb.Stateless;
+import jakarta.inject.Inject;
 import learning_java_ee.control.CarFactory;
 import learning_java_ee.control.CarRepository;
 import learning_java_ee.entity.Car;
 import learning_java_ee.entity.Specification;
 
-import javax.ejb.Stateless;
-import javax.inject.Inject;
+
 import java.util.List;
 
 @Stateless

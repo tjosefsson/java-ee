@@ -1,9 +1,7 @@
 package learning_java_ee.control;
 
+import jakarta.ws.rs.Produces;
 import learning_java_ee.entity.Color;
-
-import javax.enterprise.inject.Produces;
-import javax.inject.Named;
 
 public class DefaultColorExposer {
 
