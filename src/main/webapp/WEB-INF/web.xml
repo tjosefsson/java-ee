@@ -4,20 +4,14 @@
                              http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
-    <display-name>My Application</display-name>
-
-    <!-- Define servlets, filters, and listeners here -->
-
     <servlet>
-        <servlet-name>exampleServlet</servlet-name>
-        <servlet-class>com.example.ExampleServlet</servlet-class>
+        <servlet-name>javax.ws.rs.core.Application</servlet-name>
+        <servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>exampleServlet</servlet-name>
-        <url-pattern>/example</url-pattern>
+        <servlet-name>javax.ws.rs.core.Application</servlet-name>
+        <url-pattern>/api/*</url-pattern>
     </servlet-mapping>
-
-    <!-- Context parameters, session-config, etc. -->
 
 </web-app>

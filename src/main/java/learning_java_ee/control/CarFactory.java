@@ -9,9 +9,8 @@ import java.util.UUID;
 
 public class CarFactory {
 
-    @Inject
-    @Diesel
-    Color defaultColor;
+
+    Color defaultColor = null;
 
     public Car createCar(Specification specification) {
         Car car = new Car();
