@@ -9,7 +9,7 @@ import learning_java_ee.entity.Car;
 
 import java.util.List;
 
-@Path("cars")
+@Path("/cars")
 @Produces(MediaType.APPLICATION_JSON)
 public class CarResource {
 

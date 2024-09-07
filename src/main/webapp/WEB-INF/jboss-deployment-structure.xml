@@ -1,7 +1,0 @@
-<jboss-deployment-structure>
-    <deployment>
-        <exclusions>
-            <module name="jakarta.ws.rs.api" />
-        </exclusions>
-    </deployment>
-</jboss-deployment-structure>
