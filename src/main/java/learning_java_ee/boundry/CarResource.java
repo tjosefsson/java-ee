@@ -13,11 +13,12 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 public class CarResource {
 
-    @Inject
-    CarManufacturer carManufacturer;
+//    @Inject
+//    CarManufacturer carManufacturer;
 
     @GET
-    public List<Car> retreaveCars() {
-        return carManufacturer.retrieveCar();
+    public String retreaveCars() {
+        return "hello world";
+//        return carManufacturer.retrieveCar();
     }
 }
