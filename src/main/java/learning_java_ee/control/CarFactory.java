@@ -1,6 +1,5 @@
 package learning_java_ee.control;
 
-import jakarta.inject.Inject;
 import learning_java_ee.entity.Car;
 import learning_java_ee.entity.Color;
 import learning_java_ee.entity.Specification;
@@ -8,7 +7,6 @@ import learning_java_ee.entity.Specification;
 import java.util.UUID;
 
 public class CarFactory {
-
 
     Color defaultColor = null;
 

@@ -8,8 +8,6 @@ import learning_java_ee.entity.CarCreated;
 public class CarCreationListener {
 
     public void onCreationListener(@Observes CarCreated carCreated) {
-
         System.out.println("new car created with id " + carCreated.getIdentifier());
-
     }
 }

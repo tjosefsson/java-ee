@@ -1,8 +1,11 @@
 package learning_java_ee.entity;
 
 
+import jakarta.json.bind.annotation.JsonbTransient;
+
 public class Car {
 
+    @JsonbTransient
     private String identifier;
     private Color color;
     private EngineType engineType;
@@ -30,5 +33,16 @@ public class Car {
     public void setEngineType(EngineType engineType) {
         this.engineType = engineType;
     }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "identifier='" + identifier + '\'' +
+                ", color=" + color +
+                ", engineType=" + engineType +
+                '}';
+    }
 }
+
+
 

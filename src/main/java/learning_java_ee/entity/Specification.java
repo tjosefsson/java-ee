@@ -1,8 +1,17 @@
 package learning_java_ee.entity;
 
-public class Specification {
-    private final Color color;
-    private final EngineType engineType;
+import jakarta.json.bind.annotation.JsonbProperty;
+
+public class Specification  {
+
+    @JsonbProperty
+    private Color color;
+    @JsonbProperty
+    private EngineType engineType;
+
+
+    public Specification() {
+    }
 
     public Specification(Color color, EngineType engineType) {
         this.color = color;
