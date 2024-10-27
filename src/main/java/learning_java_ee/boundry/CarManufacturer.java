@@ -2,12 +2,11 @@ package learning_java_ee.boundry;
 
 
 import jakarta.ejb.Stateless;
-import jakarta.enterprise.event.Event;
 import jakarta.inject.Inject;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import learning_java_ee.control.CarFactory;
-import learning_java_ee.control.CarRepository;
 import learning_java_ee.entity.Car;
-import learning_java_ee.entity.CarCreated;
 import learning_java_ee.entity.Specification;
 
 
@@ -18,27 +17,18 @@ public class CarManufacturer {
 
     @Inject
     CarFactory carFactory;
-    @Inject
-    CarRepository carRepository;
-    @Inject
-    Event<CarCreated> carCreated;
+    @PersistenceContext
+    EntityManager em;
+
 
     public Car manufactureCar(Specification specification) {
-        Car car = carFactory.createCar(specification);
-        carRepository.store(car);
-
-        carCreated.fire(new CarCreated(car.getIdentifier()));
-
+        var car = carFactory.createCar(specification);
+        em.persist(car);
         return car;
     }
 
     public List<Car> retrieveCars() {
-        return carRepository.loadCars();
+        return em.createQuery("SELECT c from Car c", Car.class).getResultList();
     }
 
-    public Car retrieveCar(String id) {
-         return carRepository.loadCar(id)
-                 .orElseThrow(() -> new RuntimeException(String.format("we found no car with id %s", id)));
-
-    }
 }

@@ -1,21 +1,27 @@
 package learning_java_ee.entity;
 
+import jakarta.persistence.*;
 
-import jakarta.json.bind.annotation.JsonbTransient;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Car {
+@Entity
+public class Car implements Serializable {
 
-    @JsonbTransient
-    private String identifier;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    @Enumerated(EnumType.STRING)
     private Color color;
+    @Enumerated(EnumType.STRING)
     private EngineType engineType;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "car", nullable = false)
+    private List<Seat> seats = new ArrayList<>();
 
-    public String getIdentifier() {
-        return identifier;
-    }
-
-    public void setIdentifier(String identifier) {
-        this.identifier = identifier;
+    public long getId() {
+        return id;
     }
 
     public Color getColor() {
@@ -34,13 +40,54 @@ public class Car {
         this.engineType = engineType;
     }
 
+    public List<Seat> getSeats() {
+        return seats;
+    }
+
+    public void setSeats(List<Seat> seats) {
+        this.seats = seats;
+    }
+
     @Override
     public String toString() {
         return "Car{" +
-                "identifier='" + identifier + '\'' +
+                "identifier='" + id + '\'' +
                 ", color=" + color +
                 ", engineType=" + engineType +
                 '}';
+    }
+
+    public static class Builder {
+        Car car;
+
+        public Builder() {
+            car = new Car();
+        }
+
+        public Builder withId(long id) {
+            car.id = id;
+            return this;
+        }
+
+        public Builder withColor(Color color) {
+            car.color = color;
+            return this;
+        }
+
+        public Builder withEngineType(EngineType engineType) {
+            car.engineType = engineType;
+            return this;
+        }
+
+        public Builder withSeats(List<Seat> seats) {
+            car.seats.addAll(seats);
+            return this;
+        }
+
+        public Car build() {
+            return car;
+        }
+
     }
 }
 

@@ -1,21 +1,23 @@
 package learning_java_ee.entity;
 
-import jakarta.json.bind.annotation.JsonbProperty;
+import jakarta.validation.constraints.NotNull;
 
-public class Specification  {
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
-    @JsonbProperty
+public class Specification implements Serializable {
+
+    @NotNull
     private Color color;
-    @JsonbProperty
+    @NotNull
+//    @EnvironmentalFriendly
     private EngineType engineType;
+    private List<Seat> seats = new ArrayList<>();
 
 
     public Specification() {
-    }
-
-    public Specification(Color color, EngineType engineType) {
-        this.color = color;
-        this.engineType = engineType;
     }
 
     public Color getColor() {
@@ -24,5 +26,21 @@ public class Specification  {
 
     public EngineType getEngineType() {
         return engineType;
+    }
+
+    public void setColor(@NotNull Color color) {
+        this.color = color;
+    }
+
+    public void setEngineType(@NotNull EngineType engineType) {
+        this.engineType = engineType;
+    }
+
+    public List<Seat> getSeats() {
+        return seats;
+    }
+
+    public void setSeats(List<Seat> seats) {
+        this.seats = seats;
     }
 }
